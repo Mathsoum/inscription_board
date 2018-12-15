@@ -2,12 +2,13 @@
 #define MAINLISTMODEL_H
 
 #include <QAbstractListModel>
+#include <QtQml>
 
 class MainListModel : public QAbstractListModel
 {
-
 public:
     MainListModel(QObject* parent = nullptr);
+    ~MainListModel() = default;
 
     int rowCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;

@@ -13,7 +13,7 @@ MainController::~MainController()
     }
 }
 
-MainListModel *MainController::mainListModel() const
+MainListModel* MainController::mainListModel() const
 {
     return _mainListModel;
 }
