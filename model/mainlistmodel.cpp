@@ -2,6 +2,8 @@
 
 #include <QDebug>
 
+#include "model/databasemanager.h"
+
 MainListModel::MainListModel(QObject *parent)
     : QAbstractListModel(parent)
 {

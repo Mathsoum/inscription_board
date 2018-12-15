@@ -8,13 +8,14 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Sql REQUIRED)
 
 add_executable(${PROJECT_NAME}
     "main.cpp"
     "maincontroller.cpp"
     "model/mainlistmodel.cpp"
+    "model/databasemanager.cpp"
     "qml.qrc"
     )
 
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick)
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick Qt5::Sql)

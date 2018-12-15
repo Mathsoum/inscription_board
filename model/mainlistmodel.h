@@ -1,8 +1,12 @@
 #ifndef MAINLISTMODEL_H
 #define MAINLISTMODEL_H
 
+#include <memory>
+
 #include <QAbstractListModel>
 #include <QtQml>
+
+class DatabaseManager;
 
 class MainListModel : public QAbstractListModel
 {

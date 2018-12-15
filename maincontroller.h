@@ -1,10 +1,13 @@
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
 
+#include <memory>
+
 #include <QObject>
 #include <QtQml>
 
 #include "model/mainlistmodel.h"
+#include "model/databasemanager.h"
 
 class MainController : public QObject
 {
@@ -14,12 +17,13 @@ class MainController : public QObject
 
 public:
     MainController(QObject* parent = nullptr);
-    virtual ~MainController();
+    virtual ~MainController() = default;
 
     MainListModel *mainListModel() const;
 
 private:
-    MainListModel* _mainListModel; //FIXME Use smart pointers
+    std::unique_ptr<MainListModel>   _mainListModel; //FIXME Use smart pointers
+    std::unique_ptr<DatabaseManager> _databaseManager;
 };
 
 QML_DECLARE_TYPE(MainController)

@@ -1,19 +1,13 @@
 #include "maincontroller.h"
 
 MainController::MainController(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      _mainListModel(std::make_unique<MainListModel>(this)),
+      _databaseManager(std::make_unique<DatabaseManager>())
 {
-    _mainListModel = new MainListModel(this);
-}
-
-MainController::~MainController()
-{
-    if (_mainListModel != nullptr) {
-        delete _mainListModel;
-    }
 }
 
 MainListModel* MainController::mainListModel() const
 {
-    return _mainListModel;
+    return _mainListModel.get();
 }
