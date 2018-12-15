@@ -39,7 +39,7 @@ ApplicationWindow {
                                 verticalCenter: parent.verticalCenter
                             }
 
-                            text: "Item " + (index + 1)
+                            text: model.display
                         }
 
                         Component.onCompleted: {
