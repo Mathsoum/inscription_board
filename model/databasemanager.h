@@ -5,13 +5,19 @@
 
 #include<QSqlDatabase>
 
+#include "model/registration.h"
+
 class DatabaseManager
 {
 public:
     DatabaseManager();
     ~DatabaseManager() = default;
 
-private:
+private: // Methods
+    void _initDatabase();
+    bool _tableExists(const QString& tableName) const;
+
+private: // Attributes
     std::unique_ptr<QSqlDatabase> _database;
 };
 
