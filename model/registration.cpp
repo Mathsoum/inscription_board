@@ -14,7 +14,6 @@ Registration::Registration(QObject *parent):
     _hasPayed(false),
     _paymentMethod(PaymentMethod::Value::NOT_PAYED)
 {
-
 }
 
 Registration::Registration(const QString &name, const int licensedAdults, const int unlicensedAdults, const int licensedChildren, const int unlicensedChildren, const int childrenUnder7)
@@ -124,5 +123,20 @@ CUSTOM_GET_SET(int, unlicensedAdults, setUnlicensedAdults)
 CUSTOM_GET_SET(int, licensedChildren, setLicensedChildren)
 CUSTOM_GET_SET(int, unlicensedChildren, setUnlicensedChildren)
 CUSTOM_GET_SET(int, childrenUnder7, setChildrenUnder7)
-CUSTOM_GET_SET(bool, hasPayed, setHasPayed)
 CUSTOM_GET_SET_REF(PaymentMethod::Value, paymentMethod, setPaymentMethod)
+
+//FIXME Use a DB table for these unitary prices
+constexpr double LICENSED_ADULT_PRICE   = 1;
+constexpr double UNLICENSED_ADULT_PRICE = 1;
+constexpr double LICENSED_CHILD_PRICE   = 1;
+constexpr double UNLICENSED_CHILD_PRICE = 1;
+constexpr double CHILD_UNDER_7_PRICE    = 0;
+
+double Registration::totalPrice() const
+{
+    return (_licensedAdults * LICENSED_ADULT_PRICE)
+            + (_unlicensedAdults * UNLICENSED_ADULT_PRICE)
+            + (_licensedChildren * LICENSED_CHILD_PRICE)
+            + (_unlicensedChildren * UNLICENSED_CHILD_PRICE)
+            + (_childrenUnder7 * CHILD_UNDER_7_PRICE);
+}

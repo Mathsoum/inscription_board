@@ -17,8 +17,9 @@ class Registration : public QObject
     Q_PROPERTY(int licensedChildren READ licensedChildren WRITE setLicensedChildren NOTIFY licensedChildrenChanged)
     Q_PROPERTY(int unlicensedChildren READ unlicensedChildren WRITE setUnlicensedChildren NOTIFY unlicensedChildrenChanged)
     Q_PROPERTY(int childrenUnder7 READ childrenUnder7 WRITE setChildrenUnder7 NOTIFY childrenUnder7Changed)
-    Q_PROPERTY(bool hasPayed READ hasPayed WRITE setHasPayed NOTIFY hasPayedChanged)
     Q_PROPERTY(PaymentMethod::Value paymentMethod READ paymentMethod WRITE setPaymentMethod NOTIFY paymentMethodChanged)
+
+    Q_PROPERTY(double totalPrice READ totalPrice CONSTANT)
 
 public:
     Registration(QObject* parent = nullptr);
@@ -50,8 +51,7 @@ public:
     int childrenUnder7() const;
     void setChildrenUnder7(int childrenUnder7);
 
-    bool hasPayed() const;
-    void setHasPayed(bool hasPayed);
+    double totalPrice() const;
 
     PaymentMethod::Value paymentMethod() const;
     void setPaymentMethod(const PaymentMethod::Value &paymentMethod);
@@ -63,7 +63,7 @@ signals:
     void licensedChildrenChanged(const int& value);
     void unlicensedChildrenChanged(const int& value);
     void childrenUnder7Changed(const int& value);
-    void hasPayedChanged(const bool& value);
+    void totalPriceChanged(const double& value);
     void paymentMethodChanged(PaymentMethod::Value value);
 
 private:
