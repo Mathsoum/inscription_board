@@ -33,3 +33,17 @@ QStringList Registration::getSqlColumns()
                          << "category"
                          << "membership";
 }
+
+QString Registration::tableCreationQuery()
+{
+    //FIXME Not tested yet !!
+    return QString("CREATE TABLE " + Registration::tableName + " ("
+                      "id INT PRIMARY KEY NOT NULL,"
+                      "name VARCHAR(100),"
+                      "licensedAdults INT DEFAULT 0,"
+                      "unlicensedAdults INT DEFAULT 0,"
+                      "licensedChildren INT DEFAULT 0,"
+                      "unlicensedChildren INT DEFAULT 0,"
+                      "childrenUnder7 INT DEFAULT 0,"
+                   ")");
+}

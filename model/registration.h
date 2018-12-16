@@ -15,6 +15,7 @@ public:
     static QStringList getSqlColumns();
 
     static QString tableName;
+    static QString tableCreationQuery();
 
 private:
     int _bddId;
