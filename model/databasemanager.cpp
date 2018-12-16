@@ -12,6 +12,7 @@ DatabaseManager::DatabaseManager()
     _database->setDatabaseName("inscription_board.sqlite");
     assert(_database->open());
     _initDatabase();
+    _populateCache();
 }
 
 void DatabaseManager::_initDatabase()
@@ -32,4 +33,20 @@ void DatabaseManager::_initDatabase()
 bool DatabaseManager::_tableExists(const QString &tableName) const
 {
     return _database->tables().contains(tableName);
+}
+
+void DatabaseManager::_populateCache()
+{
+    _registrations.clear();
+    QSqlQuery query("SELECT " + Registration::getSqlColumns().join(",") + " FROM " + Registration::tableName);
+    while(query.next()) {
+        QVariantHash record;
+        for (decltype(Registration::getSqlColumns().size()) i = 0 ; i < Registration::getSqlColumns().size(); ++i) {
+            record.insert(Registration::getSqlColumns().at(i), query.value(i));
+        }
+
+        _registrations.push_back(Registration(record));
+    }
+
+    qDebug() << _registrations.size() << "registrations retrieved from DB";
 }
