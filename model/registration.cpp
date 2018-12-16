@@ -1,5 +1,7 @@
 #include "registration.h"
 
+QString Registration::tableName = "registrations";
+
 Registration::Registration(const QString &name, const int licensedAdults, const int unlicensedAdults, const int licensedChildren, const int unlicensedChildren, const int childrenUnder7)
     : _bddId(-1),
       _name(name),

@@ -14,6 +14,8 @@ public:
 
     static QStringList getSqlColumns();
 
+    static QString tableName;
+
 private:
     int _bddId;
     QString _name;
