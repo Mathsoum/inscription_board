@@ -11,8 +11,60 @@ ApplicationWindow {
 
     property var controller: MainController
 
+    Rectangle {
+        id: headerBar
+
+        width: parent.width
+        height: 35
+
+        color: "blue"
+
+        Row {
+            anchors.fill: parent
+
+            Button {
+                id: add
+                height: parent.height
+                width: height
+
+                Image {
+                    anchors.fill: parent
+                    source: "images/cog.svg"
+
+                    sourceSize.width: width
+                    sourceSize.height: height
+                }
+            }
+
+            Button {
+                height: parent.height
+                width: height
+
+                Text {
+                    anchors.fill: parent
+                    text: "B"
+                }
+            }
+
+            Button {
+                height: parent.height
+                width: height
+
+                Text {
+                    anchors.fill: parent
+                    text: "C"
+                }
+            }
+        }
+    }
+
     ScrollView {
-        anchors.fill: parent
+        anchors {
+            top: headerBar.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
 
         ListView {
             width: parent.width
