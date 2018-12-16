@@ -44,6 +44,6 @@ QString Registration::tableCreationQuery()
                       "unlicensedAdults INT DEFAULT 0,"
                       "licensedChildren INT DEFAULT 0,"
                       "unlicensedChildren INT DEFAULT 0,"
-                      "childrenUnder7 INT DEFAULT 0,"
-                   ")");
+                      "childrenUnder7 INT DEFAULT 0"
+                   ");");
 }
