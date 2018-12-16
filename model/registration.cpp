@@ -2,17 +2,45 @@
 
 QString Registration::tableName = "registrations";
 
-Registration::Registration(const QString &name, const int licensedAdults, const int unlicensedAdults, const int licensedChildren, const int unlicensedChildren, const int childrenUnder7)
-    : _bddId(-1),
-      _name(name),
-      _numberOfLicencedAdults(licensedAdults),
-      _numberOfUnlicencedAdults(unlicensedAdults),
-      _numberOfLicencedChildren(licensedChildren),
-      _numberOfUnlicencedChildren(unlicensedChildren),
-      _numberOfChildrenUnder7(childrenUnder7),
-      _hasPayed(false),
-      _paymentMethod(PaymentMethod::NOT_PAYED)
+Registration::Registration():
+    _bddId(-1),
+    _name(""),
+    _numberOfLicencedAdults(0),
+    _numberOfUnlicencedAdults(0),
+    _numberOfLicencedChildren(0),
+    _numberOfUnlicencedChildren(0),
+    _numberOfChildrenUnder7(0),
+    _hasPayed(false),
+    _paymentMethod(PaymentMethod::NOT_PAYED)
 {
+
+}
+
+Registration::Registration(const QString &name, const int licensedAdults, const int unlicensedAdults, const int licensedChildren, const int unlicensedChildren, const int childrenUnder7)
+    : Registration()
+{
+    _name                       = { name };
+    _numberOfLicencedAdults     = { licensedAdults };
+    _numberOfUnlicencedAdults   = { unlicensedAdults };
+    _numberOfLicencedChildren   = { licensedChildren };
+    _numberOfUnlicencedChildren = { unlicensedChildren };
+    _numberOfChildrenUnder7     = { childrenUnder7 };
+}
+
+#define RECORD_LOOKUP(entry, attr) if(record.contains(entry)) attr = record[entry]
+Registration::Registration(const QVariantHash &record)
+{
+    if (!record.isEmpty()) {
+        if (record.contains("id")) _bddId = record["id"].toInt();
+        if (record.contains("name")) _name = record["name"].toString();
+        if (record.contains("licensedAdults")) _numberOfLicencedAdults = record["licensedAdults"].toInt();
+        if (record.contains("unlicensedAdults")) _numberOfUnlicencedAdults = record["unlicensedAdults"].toInt();
+        if (record.contains("licensedChildren")) _numberOfLicencedChildren = record["licensedChildren"].toInt();
+        if (record.contains("unlicensedChildren")) _numberOfUnlicencedChildren = record["unlicensedChildren"].toInt();
+        if (record.contains("childrenUnder7")) _numberOfChildrenUnder7 = record["childrenUnder7"].toInt();
+        if (record.contains("hasPayed")) _hasPayed = record["hasPayed"].toInt() != 0;
+        if (record.contains("paymentMethod")) _paymentMethod = PaymentMethod(record["paymentMethod"].toInt());
+    }
 }
 
 QVariantHash Registration::getHashValues() const

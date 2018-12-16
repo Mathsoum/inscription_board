@@ -7,8 +7,9 @@
 class Registration
 {
 public:
-    Registration() = default;
+    Registration();
     Registration(const QString& name, const int licensedAdults, const int unlicensedAdults, const int licensedChildren, const int unlicensedChildren, const int childrenUnder7);
+    Registration(const QVariantHash& record);
 
     QVariantHash getHashValues() const;
 
