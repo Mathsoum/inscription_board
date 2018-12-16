@@ -93,10 +93,6 @@ ApplicationWindow {
 
                             text: model.QtObject.name
                         }
-
-                        Component.onCompleted: {
-                            console.log(qsTr("width #%1: %2 (%3)").arg(index + 1).arg(width).arg(parent.width))
-                        }
                     }
 
                     Rectangle {
@@ -111,7 +107,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: model.QtObject.licensedAdults
                         }
                     }
 
@@ -127,7 +123,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: model.QtObject.unlicensedAdults
                         }
                     }
 
@@ -143,7 +139,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: model.QtObject.licensedChildren
                         }
                     }
 
@@ -159,7 +155,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: model.QtObject.unlicensedChildren
                         }
                     }
 
@@ -175,7 +171,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: model.QtObject.childrenUnder7
                         }
                     }
 
@@ -191,7 +187,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: Number(model.QtObject.totalPrice).toFixed(2) + " €" //TODO Currency format
                         }
                     }
 
@@ -207,7 +203,7 @@ ApplicationWindow {
                                 centerIn: parent
                             }
 
-                            text: "X"
+                            text: "TODO Combobox"
                         }
                     }
                 }
