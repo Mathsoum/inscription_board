@@ -6,7 +6,7 @@
 #include <QObject>
 #include <QtQml>
 
-#include "model/mainlistmodel.h"
+#include "viewModel/mainlistmodel.h"
 #include "model/databasemanager.h"
 
 class MainController : public QObject

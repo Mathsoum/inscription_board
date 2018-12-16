@@ -13,7 +13,7 @@ find_package(Qt5 COMPONENTS Core Quick Sql REQUIRED)
 add_executable(${PROJECT_NAME}
     "main.cpp"
     "maincontroller.cpp"
-    "model/mainlistmodel.cpp"
+    "viewModel/mainlistmodel.cpp"
     "model/databasemanager.cpp"
     "qml.qrc"
     )
