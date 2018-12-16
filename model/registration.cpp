@@ -9,20 +9,24 @@ Registration::Registration(const QString &name, const int licensedAdults, const 
       _numberOfUnlicencedAdults(unlicensedAdults),
       _numberOfLicencedChildren(licensedChildren),
       _numberOfUnlicencedChildren(unlicensedChildren),
-      _numberOfChildrenUnder7(childrenUnder7)
+      _numberOfChildrenUnder7(childrenUnder7),
+      _hasPayed(false),
+      _paymentMethod(PaymentMethod::NOT_PAYED)
 {
 }
 
 QVariantHash Registration::getHashValues() const
 {
     return QVariantHash{
-        { "id",                 QString::number(_bddId) },
+        { "id",                 QString::number( _bddId ) },
         { "name",               _name },
-        { "licensedAdults",     QString::number(_numberOfLicencedAdults) },
-        { "unlicensedAdults",   QString::number(_numberOfUnlicencedAdults) },
-        { "licensedChildren",   QString::number(_numberOfLicencedChildren) },
-        { "unlicensedChildren", QString::number(_numberOfUnlicencedChildren) },
-        { "childrenUnder7",     QString::number(_numberOfChildrenUnder7) }
+        { "licensedAdults",     QString::number( _numberOfLicencedAdults ) },
+        { "unlicensedAdults",   QString::number( _numberOfUnlicencedAdults ) },
+        { "licensedChildren",   QString::number( _numberOfLicencedChildren ) },
+        { "unlicensedChildren", QString::number( _numberOfUnlicencedChildren ) },
+        { "childrenUnder7",     QString::number( _numberOfChildrenUnder7 ) },
+        { "hasPayed",           ( _hasPayed ? "1" : "0" ) },
+        { "paymentMethod",      QString::number( int(_paymentMethod) ) }
     };
 }
 
@@ -30,13 +34,17 @@ QStringList Registration::getSqlColumns()
 {
     return QStringList() << "id"
                          << "name"
-                         << "category"
-                         << "membership";
+                         << "licensedAdults"
+                         << "unlicensedAdults"
+                         << "licensedChildren"
+                         << "unlicensedChildren"
+                         << "childrenUnder7"
+                         << "hasPayed"
+                         << "paymentMethod";
 }
 
 QString Registration::tableCreationQuery()
 {
-    //FIXME Not tested yet !!
     return QString("CREATE TABLE " + Registration::tableName + " ("
                       "id INT PRIMARY KEY NOT NULL,"
                       "name VARCHAR(100),"
@@ -44,6 +52,8 @@ QString Registration::tableCreationQuery()
                       "unlicensedAdults INT DEFAULT 0,"
                       "licensedChildren INT DEFAULT 0,"
                       "unlicensedChildren INT DEFAULT 0,"
-                      "childrenUnder7 INT DEFAULT 0"
+                      "childrenUnder7 INT DEFAULT 0,"
+                      "hasPayed INT DEFAULT 0,"
+                      "paymentMethod INT DEFAULT 0"
                    ");");
 }

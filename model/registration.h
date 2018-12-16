@@ -18,6 +18,12 @@ public:
     static QString tableCreationQuery();
 
 private:
+    enum class PaymentMethod {
+        NOT_PAYED = 0,
+        CASH,
+        CHECK
+    };
+
     int _bddId;
     QString _name;
 
@@ -28,6 +34,8 @@ private:
     int _numberOfUnlicencedChildren;
     int _numberOfChildrenUnder7;
 
+    bool _hasPayed;
+    PaymentMethod _paymentMethod;
 };
 
 #endif // REGISTEREDPERSON_H
