@@ -55,3 +55,18 @@ void DatabaseManager::_populateCache()
 
     qDebug() << _registrations.size() << "registrations retrieved from DB";
 }
+
+QList<Registration *> DatabaseManager::registrations() const
+{
+    return _registrations;
+}
+
+const QList<Registration *> &DatabaseManager::registrationsCRef() const
+{
+    return _registrations;
+}
+
+Registration *DatabaseManager::getRegistrationAt(int index) const
+{
+    return _registrations.at(index);
+}

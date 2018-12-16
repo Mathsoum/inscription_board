@@ -81,6 +81,6 @@ private:
     PaymentMethod::Value _paymentMethod;
 };
 
-QML_DECLARE_TYPE(Registration)
+Q_DECLARE_METATYPE(Registration *)
 
 #endif // REGISTEREDPERSON_H

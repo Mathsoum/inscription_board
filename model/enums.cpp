@@ -7,9 +7,9 @@ PaymentMethod::PaymentMethod(QObject *parent) : QObject(parent)
 
 void PaymentMethod::fillWithAllEnumValue()
 {
-    _valueNameHash[Value::NOT_PAYED] = "Pas payé";
-    _valueNameHash[Value::CASH] = "Espèces";
-    _valueNameHash[Value::CHECK] = "Chèque";
+    _valueNameHash[NOT_PAYED] = "Pas payé";
+    _valueNameHash[CASH] = "Espèces";
+    _valueNameHash[CHECK] = "Chèque";
 }
 
 QList<QString> PaymentMethod::valueNames() const

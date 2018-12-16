@@ -11,7 +11,7 @@ class PaymentMethod : public QObject
     Q_PROPERTY(QList<QString> valueNames READ valueNames CONSTANT)
 
 public:
-    enum class Value {
+    enum Value {
         NOT_PAYED = 0,
         CASH,
         CHECK

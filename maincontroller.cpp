@@ -2,8 +2,8 @@
 
 MainController::MainController(QObject *parent)
     : QObject(parent),
-      _mainListModel(std::make_unique<MainListModel>(this)),
-      _databaseManager(std::make_unique<DatabaseManager>())
+      _databaseManager(std::make_shared<DatabaseManager>()),
+      _mainListModel(std::make_unique<MainListModel>(_databaseManager, this))
 {
 }
 

@@ -22,8 +22,8 @@ public:
     MainListModel *mainListModel() const;
 
 private:
+    std::shared_ptr<DatabaseManager> _databaseManager;
     std::unique_ptr<MainListModel>   _mainListModel; //FIXME Use smart pointers
-    std::unique_ptr<DatabaseManager> _databaseManager;
 };
 
 QML_DECLARE_TYPE(MainController)

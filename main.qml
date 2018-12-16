@@ -91,7 +91,7 @@ ApplicationWindow {
                                 verticalCenter: parent.verticalCenter
                             }
 
-                            text: model.display
+                            text: model.QtObject.name
                         }
 
                         Component.onCompleted: {

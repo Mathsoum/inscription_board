@@ -13,6 +13,11 @@ public:
     DatabaseManager();
     ~DatabaseManager();
 
+    QList<Registration *> registrations() const;
+    const QList<Registration *>& registrationsCRef() const;
+
+    Registration *getRegistrationAt(int index) const;
+
 private: // Methods
     void _initDatabase();
     bool _tableExists(const QString& tableName) const;
