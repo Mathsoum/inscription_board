@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME}
     "viewModel/mainlistmodel.cpp"
     "model/databasemanager.cpp"
     "model/registration.cpp"
+    "model/enums.cpp"
     "qml.qrc"
     )
 

@@ -11,7 +11,7 @@ class DatabaseManager
 {
 public:
     DatabaseManager();
-    ~DatabaseManager() = default;
+    ~DatabaseManager();
 
 private: // Methods
     void _initDatabase();
@@ -21,7 +21,7 @@ private: // Methods
 private: // Attributes
     std::unique_ptr<QSqlDatabase> _database;
 
-    QList<Registration> _registrations;
+    QList<Registration*> _registrations;
 };
 
 #endif // DATABASEMANAGER_H

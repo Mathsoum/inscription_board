@@ -15,6 +15,11 @@ DatabaseManager::DatabaseManager()
     _populateCache();
 }
 
+DatabaseManager::~DatabaseManager()
+{
+    qDeleteAll(_registrations);
+}
+
 void DatabaseManager::_initDatabase()
 {
     if ( !_tableExists(Registration::tableName) ) {
@@ -45,7 +50,7 @@ void DatabaseManager::_populateCache()
             record.insert(Registration::getSqlColumns().at(i), query.value(i));
         }
 
-        _registrations.push_back(Registration(record));
+        _registrations.push_back(new Registration(record));
     }
 
     qDebug() << _registrations.size() << "registrations retrieved from DB";
