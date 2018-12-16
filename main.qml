@@ -78,8 +78,8 @@ ApplicationWindow {
                     anchors.fill: parent
 
                     Rectangle {
-                        id: textCell
-                        width: parent.width * 0.7
+                        id: name
+                        width: parent.width * 0.2
                         height: parent.height
 
                         color: (index % 2 == 0) ? "#aacbef" : "white"
@@ -100,10 +100,11 @@ ApplicationWindow {
                     }
 
                     Rectangle {
+                        id: licensedAdults
                         width: parent.width * 0.1
                         height: parent.height
 
-                        color: textCell.color
+                        color: name.color
 
                         Text {
                             anchors {
@@ -115,32 +116,98 @@ ApplicationWindow {
                     }
 
                     Rectangle {
+                        id: unlicensedAdults
                         width: parent.width * 0.1
                         height: parent.height
 
-                        color: textCell.color
+                        color: name.color
 
                         Text {
                             anchors {
                                 centerIn: parent
                             }
 
-                            text: "Y"
+                            text: "X"
                         }
                     }
 
                     Rectangle {
+                        id: licensedChildren
                         width: parent.width * 0.1
                         height: parent.height
 
-                        color: textCell.color
+                        color: name.color
 
                         Text {
                             anchors {
                                 centerIn: parent
                             }
 
-                            text: "Z"
+                            text: "X"
+                        }
+                    }
+
+                    Rectangle {
+                        id: unlicensedChildren
+                        width: parent.width * 0.1
+                        height: parent.height
+
+                        color: name.color
+
+                        Text {
+                            anchors {
+                                centerIn: parent
+                            }
+
+                            text: "X"
+                        }
+                    }
+
+                    Rectangle {
+                        id: childrenUnder7
+                        width: parent.width * 0.1
+                        height: parent.height
+
+                        color: name.color
+
+                        Text {
+                            anchors {
+                                centerIn: parent
+                            }
+
+                            text: "X"
+                        }
+                    }
+
+                    Rectangle {
+                        id: totalPrice
+                        width: parent.width * 0.15
+                        height: parent.height
+
+                        color: name.color
+
+                        Text {
+                            anchors {
+                                centerIn: parent
+                            }
+
+                            text: "X"
+                        }
+                    }
+
+                    Rectangle {
+                        id: payment
+                        width: parent.width * 0.15
+                        height: parent.height
+
+                        color: name.color
+
+                        Text {
+                            anchors {
+                                centerIn: parent
+                            }
+
+                            text: "X"
                         }
                     }
                 }
